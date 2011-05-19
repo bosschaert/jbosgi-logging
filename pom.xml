@@ -34,16 +34,19 @@
     <developerConnection>scm:git:git@github.com:jbosgi/jbosgi-logging.git</developerConnection>
     <url>http://github.com/jbosgi/jbosgi-logging</url>
   </scm>
-  <!-- 
-  <!- - Properties - ->  
+
+  <!-- Properties -->  
   <properties>
+    <!-- 
     <version.jboss.osgi.spi>1.0.14</version.jboss.osgi.spi>
     <version.slf4j>1.5.8</version.slf4j>
+     -->
     <version.osgi>4.2.0</version.osgi>
   </properties>
   
-  <!- - Dependencies - ->
+  <!-- Dependencies -->
   <dependencies>
+    <!-- 
     <dependency>
       <groupId>org.jboss.osgi</groupId>
       <artifactId>jboss-osgi-spi</artifactId>
@@ -64,12 +67,13 @@
       <artifactId>jcl-over-slf4j</artifactId>
       <version>${version.slf4j}</version>
     </dependency>    
+     -->
     <dependency>
       <groupId>org.jboss.logging</groupId>
       <artifactId>jboss-logging</artifactId>
     </dependency>
-    
-    <!- - Provided Dependencies - ->
+     
+    <!-- Provided Dependencies -->
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.core</artifactId>
@@ -84,6 +88,7 @@
     </dependency>
   </dependencies>
 
+  <!-- 
   <build>
     <plugins>
       <plugin>
@@ -120,4 +125,22 @@
     </plugins>
   </build>
   -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-Activator>org.jboss.osgi.logging.internal.LoggingServicesActivator</Bundle-Activator>
+            <Export-Package>
+              org.jboss.osgi.logging;version=${project.version}
+            </Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
