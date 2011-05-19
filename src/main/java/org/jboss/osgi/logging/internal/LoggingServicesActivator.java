@@ -30,9 +30,10 @@ import org.osgi.service.log.LogReaderService;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
- * The common services activator
+ * The Log Services Activator
  *
  * @author thomas.diesler@jboss.com
+ * @author David Bosschaert
  * @since 23-Jan-2009
  */
 public class LoggingServicesActivator implements BundleActivator {
@@ -40,10 +41,6 @@ public class LoggingServicesActivator implements BundleActivator {
     private ServiceTracker logReaderTracker;
 
     public void start(BundleContext context) {
-        // Initialize the logging systems
-        // org.slf4j.LoggerFactory
-        // LoggerFactory.getLogger(CommonServicesActivator.class);
-
         logServiceTracker = new LogServiceTracker(context);
 
         // Track LogReaderService and add/remove LogListener
