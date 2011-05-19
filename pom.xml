@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <!-- ====================================================================== -->
+  <!--                                                                        -->
+  <!--  JBoss, the OpenSource J2EE webOS                                      -->
+  <!--                                                                        -->
+  <!--  Distributable under LGPL license.                                     -->
+  <!--  See terms of license at http://www.gnu.org.                           -->
+  <!--                                                                        -->
+  <!-- ====================================================================== -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <name>JBossOSGi Logging</name>
+  <description>The JBossOSGi Logging functionality</description>
+  
+  <groupId>org.jboss.osgi.logging</groupId>
+  <artifactId>jboss-osgi-logging</artifactId>
+  <packaging>bundle</packaging>
+  
+  <version>1.0.0-SNAPSHOT</version>
+  
+  <!-- Parent -->
+  <parent>
+    <groupId>org.jboss.osgi</groupId>
+    <artifactId>jboss-osgi-parent</artifactId>
+    <version>1.0.9</version>
+  </parent>
+  
+  <!-- Source -->
+  <scm>
+    <connection>scm:git:git://github.com/jbosgi/jbosgi-logging.git</connection>
+    <developerConnection>scm:git:git@github.com:jbosgi/jbosgi-logging.git</developerConnection>
+    <url>http://github.com/jbosgi/jbosgi-logging</url>
+  </scm>
+  <!-- 
+  <!- - Properties - ->  
+  <properties>
+    <version.jboss.osgi.spi>1.0.14</version.jboss.osgi.spi>
+    <version.slf4j>1.5.8</version.slf4j>
+    <version.osgi>4.2.0</version.osgi>
+  </properties>
+  
+  <!- - Dependencies - ->
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss.osgi</groupId>
+      <artifactId>jboss-osgi-spi</artifactId>
+      <version>${version.jboss.osgi.spi}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${version.slf4j}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${version.slf4j}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>${version.slf4j}</version>
+    </dependency>    
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+    </dependency>
+    
+    <!- - Provided Dependencies - ->
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>${version.osgi}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <version>${version.osgi}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-Activator>org.jboss.osgi.common.internal.CommonServicesActivator</Bundle-Activator>
+            <Export-Package>
+              org.jboss.osgi.common.log;version=${project.version}
+            </Export-Package>
+            <Import-Package>
+               org.apache.log4j;version=1.2;resolution:=optional,
+               org.jboss.logging;version="[3.0,4.0)", 
+               org.jboss.osgi.spi*;version="[1.0,2.0)",
+               org.osgi.framework;version=1.5,
+               org.osgi.service.log;version=1.3,
+               org.osgi.util.tracker
+            </Import-Package>
+            <Embed-Dependency>
+              jcl-over-slf4j;inline=false,
+              slf4j-api;inline=false,
+              slf4j-log4j12;inline=false,
+            </Embed-Dependency>
+            <_exportcontents>
+              org.apache.commons.logging;version=1.1.1,
+              org.slf4j;version=1.5.8,
+            </_exportcontents>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  -->
+</project>
