@@ -37,6 +37,7 @@
 
   <!-- Properties -->  
   <properties>
+    <semantic.version>1.0.0</semantic.version>
     <version.osgi>4.2.0</version.osgi>
   </properties>
   
@@ -70,9 +71,10 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-Version>${semantic.version}</Bundle-Version>
             <Bundle-Activator>org.jboss.osgi.logging.internal.LoggingServicesActivator</Bundle-Activator>
             <Export-Package>
-              org.jboss.osgi.logging;version=${project.version}
+              org.jboss.osgi.logging;version=${semantic.version}
             </Export-Package>
           </instructions>
         </configuration>
