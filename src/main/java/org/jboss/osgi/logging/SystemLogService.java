@@ -50,14 +50,17 @@ public class SystemLogService implements LogService {
         logInternal(null, level, message, exception);
     }
 
+    @SuppressWarnings("rawtypes")
     public void log(ServiceReference sr, int level, String message) {
         logInternal(sr, level, message, null);
     }
 
+    @SuppressWarnings("rawtypes")
     public void log(ServiceReference sr, int level, String message, Throwable exception) {
         logInternal(sr, level, message, exception);
     }
 
+    @SuppressWarnings("rawtypes")
     private void logInternal(ServiceReference sref, int level, String message, Throwable exception) {
         Bundle bundle;
         try {
@@ -74,7 +77,7 @@ public class SystemLogService implements LogService {
         if (sref != null && sref.getBundle() != null)
             srefStr = sref.getBundle().getSymbolicName();
 
-        String t = new SimpleDateFormat("dd-MMM-yyyy HH:mm.ss.SSS").format(new Date(time));
+        String t = new SimpleDateFormat("yyyy-MM-dd HH:mm.ss.SSS").format(new Date(time));
         String l = " " + logLevel(level);
         String s = srefStr != null ? ",sref=" + srefStr : "";
         String b = ",bnd=" + bndStr;
