@@ -19,7 +19,7 @@
     <artifactId>jboss-osgi-logging</artifactId>
     <packaging>bundle</packaging>
 
-    <version>1.0.2.Final</version>
+    <version>1.0.3.Final-SNAPSHOT</version>
   
     <!-- Parent -->
     <parent>
@@ -33,7 +33,7 @@
         <connection>scm:git:git://github.com/jbosgi/jbosgi-logging.git</connection>
         <developerConnection>scm:git:git@github.com:jbosgi/jbosgi-logging.git</developerConnection>
         <url>http://github.com/jbosgi/jbosgi-logging</url>
-        <tag>1.0.2.Final</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <!-- Properties -->
