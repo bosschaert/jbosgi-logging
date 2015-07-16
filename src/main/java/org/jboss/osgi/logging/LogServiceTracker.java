@@ -36,23 +36,23 @@ import org.osgi.util.tracker.ServiceTracker;
  * @author thomas.diesler@jboss.com
  * @since 11-Apr-2009
  */
-public class LogServiceTracker extends ServiceTracker implements LogService {
+public class LogServiceTracker extends ServiceTracker<LogService,LogService> implements LogService {
     private LogService log;
 
     public LogServiceTracker(BundleContext context) {
-        super(context, LogService.class.getName(), null);
+        super(context, LogService.class, null);
         log = new SystemLogService(context);
         open();
     }
 
     @Override
-    public Object addingService(ServiceReference reference) {
-        log = (LogService) super.addingService(reference);
+    public LogService addingService(ServiceReference<LogService> reference) {
+        log = super.addingService(reference);
         return log;
     }
 
     @Override
-    public void removedService(ServiceReference reference, Object service) {
+    public void removedService(ServiceReference<LogService> reference, LogService service) {
         super.removedService(reference, service);
         log = new SystemLogService(context);
     }
@@ -65,10 +65,12 @@ public class LogServiceTracker extends ServiceTracker implements LogService {
         log.log(level, message, exception);
     }
 
+    @SuppressWarnings("rawtypes")
     public void log(ServiceReference sr, int level, String message) {
         log.log(sr, level, message);
     }
 
+    @SuppressWarnings("rawtypes")
     public void log(ServiceReference sr, int level, String message, Throwable exception) {
         log.log(sr, level, message, exception);
     }

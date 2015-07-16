@@ -38,7 +38,7 @@ import org.osgi.util.tracker.ServiceTracker;
  */
 public class LoggingServicesActivator implements BundleActivator {
     private LogServiceTracker logServiceTracker;
-    private ServiceTracker logReaderTracker;
+    private ServiceTracker<LogReaderService,LogReaderService> logReaderTracker;
 
     public void start(BundleContext context) {
         logServiceTracker = new LogServiceTracker(context);
@@ -48,7 +48,7 @@ public class LoggingServicesActivator implements BundleActivator {
         logReaderTracker.open();
 
         // Register the logging marker service
-        context.registerService(LoggingService.class.getName(), new LoggingService() {
+        context.registerService(LoggingService.class, new LoggingService() {
         }, null);
     }
 
@@ -60,14 +60,14 @@ public class LoggingServicesActivator implements BundleActivator {
             logReaderTracker.close();
     }
 
-    static class LogReaderServiceServiceTracker extends ServiceTracker {
+    static class LogReaderServiceServiceTracker extends ServiceTracker<LogReaderService,LogReaderService> {
         public LogReaderServiceServiceTracker(BundleContext context) {
-            super(context, LogReaderService.class.getName(), null);
+            super(context, LogReaderService.class, null);
         }
 
         @Override
-        public Object addingService(ServiceReference reference) {
-            LogReaderService logReader = (LogReaderService) super.addingService(reference);
+        public LogReaderService addingService(ServiceReference<LogReaderService> reference) {
+            LogReaderService logReader = super.addingService(reference);
             logReader.addLogListener(new LogListenerBridge());
             return logReader;
         }

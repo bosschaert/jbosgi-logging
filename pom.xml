@@ -10,73 +10,74 @@
   <!-- ====================================================================== -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
-  <name>JBossOSGi Logging</name>
-  <description>JBossOSGi Log Service which logs over the JBoss Logger</description>
-  
-  <groupId>org.jboss.osgi.logging</groupId>
-  <artifactId>jboss-osgi-logging</artifactId>
-  <packaging>bundle</packaging>
-  
-  <version>1.0.1-SNAPSHOT</version>
-  
-  <!-- Parent -->
-  <parent>
-    <groupId>org.jboss.osgi</groupId>
-    <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.9</version>
-  </parent>
-  
-  <!-- Source -->
-  <scm>
-    <connection>scm:git:git://github.com/jbosgi/jbosgi-logging.git</connection>
-    <developerConnection>scm:git:git@github.com:jbosgi/jbosgi-logging.git</developerConnection>
-    <url>http://github.com/jbosgi/jbosgi-logging</url>
-  </scm>
+    <modelVersion>4.0.0</modelVersion>
 
-  <!-- Properties -->  
-  <properties>
-    <version.osgi>4.2.0</version.osgi>
-  </properties>
-  
-  <!-- Dependencies -->
-  <dependencies>
-    <dependency>
-      <groupId>org.jboss.logging</groupId>
-      <artifactId>jboss-logging</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.osgi</groupId>
-      <artifactId>org.osgi.core</artifactId>
-      <version>${version.osgi}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.osgi</groupId>
-      <artifactId>org.osgi.compendium</artifactId>
-      <version>${version.osgi}</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+    <name>JBossOSGi Logging</name>
+    <description>JBossOSGi Log Service which logs over the JBoss Logger</description>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-            <Bundle-Activator>org.jboss.osgi.logging.internal.LoggingServicesActivator</Bundle-Activator>
-            <Export-Package>
-              org.jboss.osgi.logging;version=${project.version}
-            </Export-Package>
-          </instructions>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <groupId>org.jboss.osgi.logging</groupId>
+    <artifactId>jboss-osgi-logging</artifactId>
+    <packaging>bundle</packaging>
+
+    <version>1.0.3.Final-SNAPSHOT</version>
+  
+    <!-- Parent -->
+    <parent>
+        <groupId>org.jboss.osgi</groupId>
+        <artifactId>jbosgi-parent</artifactId>
+        <version>1.0.28</version>
+    </parent>
+  
+    <!-- Source -->
+    <scm>
+        <connection>scm:git:git://github.com/jbosgi/jbosgi-logging.git</connection>
+        <developerConnection>scm:git:git@github.com:jbosgi/jbosgi-logging.git</developerConnection>
+        <url>http://github.com/jbosgi/jbosgi-logging</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <!-- Properties -->
+    <properties>
+        <semantic.version>1.0.0</semantic.version>
+    </properties>
+  
+    <!-- Dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+            <version>${version.osgi}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${semantic.version}</Bundle-Version>
+                        <Bundle-Activator>org.jboss.osgi.logging.internal.LoggingServicesActivator</Bundle-Activator>
+                        <Export-Package>
+                            org.jboss.osgi.logging;version="${semantic.version}"
+                        </Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
